@@ -41,13 +41,21 @@ https://templatemo.com/tm-553-xtra-blog
                 <h1 class="text-center">Xtra Blog</h1>
             </div>
             <?php
+
 wp_nav_menu(
-array(
-'theme_location' => 'side-bar',
-'menu_class' => 'i',
-)
+
+    array(
+        'menu' => 'top-menu',
+        'menu_class' => 'tm-nav',
+        'container' => 'div',
+        'li_class' => 'tm-nav-item',
+        'a_class' => 'tm-nav-link',
+        'active_class' => 'active',
+        
+    )
 );
 ?>
+
             <!-- <nav class="tm-nav" id="tm-nav">
                 <ul>
                     <li class="tm-nav-item active">
