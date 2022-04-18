@@ -8,11 +8,11 @@ add_action('after_setup_theme', 'load_title');
 
 
 // checking for acf plugin 
-if( function_exists('acf_add_options_page') ) {
+// if( function_exists('acf_add_options_page') ) {
 	
-	acf_add_options_page();
+// 	acf_add_options_page();
 	
-}
+// }
 
 
 
@@ -113,4 +113,46 @@ function add_class_li($classes, $item, $args){
         return $attr;
     }
     add_filter('nav_menu_link_attributes', 'add_anchor_class', 10, 3);
+
+
+
     
+// gallery block
+if (function_exists('acf_register_block_type')) {
+
+    add_action('acf/init', 'register_acf_block_types');
+}
+
+function register_acf_block_types()
+{
+
+    acf_register_block_type(
+
+        array(
+
+            'name' =>'gallery',
+            'title' => __('Gallery'),
+            'description' => __('A custom gallery block'),
+            'render_template' => 'gallery.php',
+            'icon' => 'editor-paste-text',
+            'keywords' => array('gallery', 'image'),
+        )
+    );
+}
+
+
+//blockquote block
+
+function mab_register_acf_block_types() {
+    acf_register_block_type( [
+        'name'            => 'blockquote',
+        'title'           => __( 'Blockquote' ),
+        'description'     => __( 'My blockquote block.' ),
+        'render_template' => 'blockquote.php',
+        'icon'            => 'format-quote',
+    ] );
+}
+
+if ( function_exists( 'acf_register_block_type' ) ) {
+    add_action( 'acf/init', 'mab_register_acf_block_types' );
+}
